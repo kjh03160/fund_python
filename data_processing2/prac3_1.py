@@ -20,6 +20,7 @@ class Point:
         result = math.sqrt((self.__x - obj1.__x) ** 2  + (self.__y - obj1.__y) ** 2)
         return result
 
+
 P1 = Point(1, -3)
 P2 = Point(-1, 5)
 P3 = Point(1, -3)
