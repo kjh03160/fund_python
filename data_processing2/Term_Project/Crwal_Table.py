@@ -8,11 +8,12 @@ from Class_Define import Department, Class, User
 class Crwal_Table:
     def __init__(self):
         self.options = webdriver.ChromeOptions()
-        # self.options.add_argument('headless')
+        self.options.add_argument('headless')
         self.options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) "
                              "Chrome/61.0.3163.100 Safari/537.36")
 
-        self.browser = webdriver.Chrome(r'C:\Users\kis03\Desktop\LIKELION\웹 크롤링\chromedriver_win32\chromedriver.exe', options=self.options)
+        self.browser = webdriver.Chrome('chromedriver.exe', options=self.options)
+
         self.dept_list = []
         self.dept_eles = None
 
@@ -30,6 +31,7 @@ class Crwal_Table:
         return self.dept_eles
 
     def make_timetable(self, major):
+        print(major, '데이터 수집 중')
         try:
             with open(major + '_all.txt', 'r', encoding="UTF-8") as file:
                 class_list = file.readlines()
@@ -39,8 +41,11 @@ class Crwal_Table:
                     area, year, subject, syllabus, required, online, foreign, team_teaching, prof, credit, class_time, restrict_num, note, stars = i
                     depart.insert_class(Class(area, year, subject, syllabus, required, online, foreign,
                                               team_teaching, prof, credit, class_time, restrict_num, note, stars))
+            print("데이터 수집 완료")
 
+            return depart
         except:
+
             dept_eles = self.lecture_home()
             major_index = self.dept_list.index(major)
             depart = Department(major)
@@ -115,18 +120,22 @@ class Crwal_Table:
         browser = self.browser
         browser.get("https://everytime.kr/lecture")
         try:
+            print('로그인 시도')
             id = browser.find_element_by_name("userid")
-            # id_input = input('아이디 입력 : ')
-            id.send_keys('kis03160')
+            id_input = input('아이디 입력 : ')
+            id.send_keys(id_input)
 
             pw = browser.find_element_by_name("password")
-            # pw_input = input('비밀번호 입력 : ')
-            pw.send_keys('stork1591')
+            pw_input = input('비밀번호 입력 : ')
+            pw.send_keys(pw_input)
 
             login = browser.find_element_by_class_name('submit')
             login.click()
+            print('에브리타임 로그인 성공')
         except:
-            pass
+            print('로그인 실패')
+            return
+
         fst_class_list = dept_obj1.classes
         scd_class_list = dept_obj2.classes
 
@@ -145,19 +154,15 @@ class Crwal_Table:
                         submit_btn = browser.find_element_by_class_name('submit')
                         input_box.send_keys(' ')
                         input_box.send_keys(course.subject.split(' / ')[0])
-                        # time.sleep(0.3)
                         browser.execute_script("arguments[0].click();", submit_btn)
                         time.sleep(0.5)
-                        # print(browser.find_elements_by_xpath("//*[contains(text(), '" + course.prof + "')]").text)
                         profs= browser.find_element_by_xpath("//*[contains(text(), '" + course.prof + "')]")
-                        # print(profs)
-                        # profs= profs.find_element_by_xpath("//*[contains(text(), '" + course.subject + "')]")
 
                         browser.execute_script("arguments[0].click();", profs)
                         time.sleep(0.5)
                         stars = browser.find_element_by_class_name('value').text
                         if stars == '0':
-                            stars = '강의 평가 없음'
+                            stars = '없음'
                         course.stars = stars
                         browser.back()
                         browser.back()
@@ -171,9 +176,13 @@ class Crwal_Table:
                         browser.execute_script("arguments[0].click();", popup)
                     except:
                         continue
-
+        print('강의평 가져오는중...')
         course_insert(fst_class_list)
+        print('1전공 완료')
         course_insert(scd_class_list)
+        print('2전공 완료')
+        browser.close()
+
 
     def all_courses(self, dept_obj):
         with open(dept_obj.name + '_all.txt', 'w', encoding="UTF-8") as file:

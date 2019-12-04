@@ -12,81 +12,81 @@
   <tbody>
     <tr>
       <th>1</th>
-      <td>[영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[영어학개론(2) / (Introduction to English Linguistics (2)),]</td>
+      <td>[Critical Reading and Writing (2),]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, Critical Reading and Writing (2)\n]</td>
-      <td>[컴퓨터네트워크 / (Computer Network)\n]</td>
+      <td>[Becoming a Great Orator (2),, Critical Reading and Writing (2),]</td>
+      <td>[컴퓨터네트워크 / (Computer Network),]</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>[영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[영어학개론(2) / (Introduction to English Linguistics (2)),]</td>
+      <td>[Critical Reading and Writing (2),]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, Critical Reading and Writing (2)\n]</td>
-      <td>[컴퓨터네트워크 / (Computer Network)\n]</td>
+      <td>[Becoming a Great Orator (2),, Critical Reading and Writing (2),]</td>
+      <td>[컴퓨터네트워크 / (Computer Network),]</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>[영어학개론(2) / (Introduction to English Linguistics (2))\n, 컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
+      <td>[영어학개론(2) / (Introduction to English Linguistics (2)),, 컴퓨터프로그래밍2 / (Computer Programming 2),]</td>
       <td>[]</td>
-      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
+      <td>[컴퓨터프로그래밍2 / (Computer Programming 2),]</td>
       <td>[]</td>
-      <td>[컴퓨터네트워크 / (Computer Network)\n]</td>
+      <td>[컴퓨터네트워크 / (Computer Network),]</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
+      <td>[컴퓨터프로그래밍2 / (Computer Programming 2),]</td>
       <td>[]</td>
-      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
-      <td>[영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2))\n, 영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
+      <td>[컴퓨터프로그래밍2 / (Computer Programming 2),]</td>
+      <td>[영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2)),, 영어학개론(2) / (Introduction to English Linguistics (2)),]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>5</th>
       <td>[]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[Critical Reading and Writing (2),]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2))\n, 영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
+      <td>[Becoming a Great Orator (2),, 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2)),, 영어학개론(2) / (Introduction to English Linguistics (2)),]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>6</th>
       <td>[]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[Critical Reading and Writing (2),]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2))\n, 영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
+      <td>[Becoming a Great Orator (2),, 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2)),, 영어학개론(2) / (Introduction to English Linguistics (2)),]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>7</th>
       <td>[]</td>
-      <td>[자료구조 / (Data Structure)\n]</td>
+      <td>[자료구조 / (Data Structure),]</td>
       <td>[]</td>
-      <td>[영국의이해 / (Understanding U.K.)\n]</td>
-      <td>[데이터베이스 / (Database)\n]</td>
+      <td>[영국의이해 / (Understanding U.K.),]</td>
+      <td>[데이터베이스 / (Database),]</td>
     </tr>
     <tr>
       <th>8</th>
       <td>[]</td>
-      <td>[자료구조 / (Data Structure)\n]</td>
+      <td>[자료구조 / (Data Structure),]</td>
       <td>[]</td>
-      <td>[영국의이해 / (Understanding U.K.)\n]</td>
-      <td>[데이터베이스 / (Database)\n]</td>
+      <td>[영국의이해 / (Understanding U.K.),]</td>
+      <td>[데이터베이스 / (Database),]</td>
     </tr>
     <tr>
       <th>9</th>
       <td>[]</td>
-      <td>[자료구조 / (Data Structure)\n]</td>
-      <td>[컴퓨터구조 / (Computer Architecture)\n]</td>
+      <td>[자료구조 / (Data Structure),]</td>
+      <td>[컴퓨터구조 / (Computer Architecture),]</td>
       <td>[]</td>
-      <td>[데이터베이스 / (Database)\n]</td>
+      <td>[데이터베이스 / (Database),]</td>
     </tr>
     <tr>
       <th>10</th>
       <td>[]</td>
       <td>[]</td>
-      <td>[컴퓨터구조 / (Computer Architecture)\n]</td>
+      <td>[컴퓨터구조 / (Computer Architecture),]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>

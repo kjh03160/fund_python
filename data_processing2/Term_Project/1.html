@@ -1,6 +1,172 @@
-<table border="1" class="dataframe">
+<!DOCTYPE html>
+    <html lang="ko">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta http-equiv="X-UA-Compatible" content="ie=edge">
+      <title>Time Table</title>
+      <style>
+      table {
+      height : 90%;
+      width : 90%;
+
+      text-align : center;
+      margin : auto;
+      }
+    @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
+
+    .blue {
+      background: #3498db;
+    }
+
+    .purple {
+      background: #9b59b6;
+    }
+
+    .navy {
+      background: #34495e;
+    }
+
+    .green {
+      background: #2ecc71;
+    }
+
+    .red {
+      background: #e74c3c;
+    }
+
+    .orange {
+      background: #f39c12;
+    }
+
+    .cs335,
+    .cs426,
+    .md303,
+    .md352,
+    .md313,
+    .cs240 {
+      font-weight: 300;
+      cursor: pointer;
+    }
+
+    body {
+      background: #e74c3c;
+      padding: 20px;
+    }
+
+    *,
+    *:before,
+    *:after {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      outline: 0;
+      -moz-box-sizing: border-box;
+      -webkit-box-sizing: border-box;
+      box-sizing: border-box;
+    }
+
+    table {
+      font-family: 'Open Sans', Helvetica;
+      color: #2f3b72;
+      border: 1px, solid, #2f3b72;
+      /* direction:rtl; */
+    }
+
+    table tr:nth-child(2n) {
+      background: #eff0f1;
+    }
+
+    table tr:nth-child(2n+3) {
+      background: #fff;
+    }
+
+    table th,
+    table td {
+      padding: 1em;
+      width: 10em;
+    }
+
+    .days,
+    .time {
+      background: #34495e;
+      text-transform: uppercase;
+      font-size: 0.6em;
+      text-align: center;
+    }
+
+    .time {
+      width: 3em !important;
+    }
+
+    /* Add this attribute to the element that needs a tooltip */
+    [data-tooltip] {
+      position: relative;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    /* Hide the tooltip content by default */
+    [data-tooltip]:before,
+    [data-tooltip]:after {
+      visibility: hidden;
+      filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+      opacity: 0;
+      pointer-events: none;
+      -moz-transition: ease 0.5s all;
+      -o-transition: ease 0.5s all;
+      -webkit-transition: ease 0.5s all;
+      transition: ease 0.5s all;
+    }
+
+    /* Position tooltip above the element */
+    [data-tooltip]:before {
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      margin-bottom: 5px;
+      margin-left: -80px;
+      padding: 7px;
+      width: 160px;
+      -moz-border-radius: 6px;
+      -webkit-border-radius: 6px;
+      border-radius: 6px;
+      background-color: black;
+      color: #fff;
+      content: attr(data-tooltip);
+      text-align: center;
+      font-size: 14px;
+      line-height: 1.2;
+    }
+
+    /* Triangle hack to make tooltip look like a speech bubble */
+    [data-tooltip]:after {
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      margin-left: -5px;
+      width: 0;
+      border-top: 5px solid black;
+      border-right: 5px solid transparent;
+      border-left: 5px solid transparent;
+      content: " ";
+      font-size: 0;
+      line-height: 0;
+    }
+
+    /* Show tooltip content on hover */
+    [data-tooltip]:hover:before,
+    [data-tooltip]:hover:after {
+      visibility: visible;
+      bottom: 90%;
+      filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+      opacity: 1;
+    }
+      </style>
+    </head>
+    <body><table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr>
       <th></th>
       <th>Mon</th>
       <th>Tue</th>
@@ -12,81 +178,81 @@
   <tbody>
     <tr>
       <th>1</th>
-      <td>[영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[영어학개론(2) / (Introduction to English Linguistics (2))]</td>
+      <td>[Critical Reading and Writing (2)]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, Critical Reading and Writing (2)\n]</td>
-      <td>[컴퓨터네트워크 / (Computer Network)\n]</td>
+      <td>[Becoming a Great Orator (2), Critical Reading and Writing (2)]</td>
+      <td>[컴퓨터네트워크 / (Computer Network)]</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>[영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[영어학개론(2) / (Introduction to English Linguistics (2))]</td>
+      <td>[Critical Reading and Writing (2)]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, Critical Reading and Writing (2)\n]</td>
-      <td>[컴퓨터네트워크 / (Computer Network)\n]</td>
+      <td>[Becoming a Great Orator (2), Critical Reading and Writing (2)]</td>
+      <td>[컴퓨터네트워크 / (Computer Network)]</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>[영어학개론(2) / (Introduction to English Linguistics (2))\n, 컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
+      <td>[영어학개론(2) / (Introduction to English Linguistics (2)), 컴퓨터프로그래밍2 / (Computer Programming 2)]</td>
       <td>[]</td>
-      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
+      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)]</td>
       <td>[]</td>
-      <td>[컴퓨터네트워크 / (Computer Network)\n]</td>
+      <td>[컴퓨터네트워크 / (Computer Network)]</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
+      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)]</td>
       <td>[]</td>
-      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)\n]</td>
-      <td>[영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2))\n, 영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
+      <td>[컴퓨터프로그래밍2 / (Computer Programming 2)]</td>
+      <td>[영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2)), 영어학개론(2) / (Introduction to English Linguistics (2))]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>5</th>
       <td>[]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[Critical Reading and Writing (2)]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2))\n, 영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
+      <td>[Becoming a Great Orator (2), 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2)), 영어학개론(2) / (Introduction to English Linguistics (2))]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>6</th>
       <td>[]</td>
-      <td>[Critical Reading and Writing (2)\n]</td>
+      <td>[Critical Reading and Writing (2)]</td>
       <td>[]</td>
-      <td>[Becoming a Great Orator (2)\n, 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2))\n, 영어학개론(2) / (Introduction to English Linguistics (2))\n]</td>
+      <td>[Becoming a Great Orator (2), 영어데이터처리를위한프로그래밍(2) / (Programming for English Data Processing (2)), 영어학개론(2) / (Introduction to English Linguistics (2))]</td>
       <td>[]</td>
     </tr>
     <tr>
       <th>7</th>
       <td>[]</td>
-      <td>[자료구조 / (Data Structure)\n]</td>
+      <td>[자료구조 / (Data Structure)]</td>
       <td>[]</td>
-      <td>[영국의이해 / (Understanding U.K.)\n]</td>
-      <td>[데이터베이스 / (Database)\n]</td>
+      <td>[영국의이해 / (Understanding U.K.)]</td>
+      <td>[데이터베이스 / (Database)]</td>
     </tr>
     <tr>
       <th>8</th>
       <td>[]</td>
-      <td>[자료구조 / (Data Structure)\n]</td>
+      <td>[자료구조 / (Data Structure)]</td>
       <td>[]</td>
-      <td>[영국의이해 / (Understanding U.K.)\n]</td>
-      <td>[데이터베이스 / (Database)\n]</td>
+      <td>[영국의이해 / (Understanding U.K.)]</td>
+      <td>[데이터베이스 / (Database)]</td>
     </tr>
     <tr>
       <th>9</th>
       <td>[]</td>
-      <td>[자료구조 / (Data Structure)\n]</td>
-      <td>[컴퓨터구조 / (Computer Architecture)\n]</td>
+      <td>[자료구조 / (Data Structure)]</td>
+      <td>[컴퓨터구조 / (Computer Architecture)]</td>
       <td>[]</td>
-      <td>[데이터베이스 / (Database)\n]</td>
+      <td>[데이터베이스 / (Database)]</td>
     </tr>
     <tr>
       <th>10</th>
       <td>[]</td>
       <td>[]</td>
-      <td>[컴퓨터구조 / (Computer Architecture)\n]</td>
+      <td>[컴퓨터구조 / (Computer Architecture)]</td>
       <td>[]</td>
       <td>[]</td>
     </tr>
@@ -108,3 +274,5 @@
     </tr>
   </tbody>
 </table>
+    </body>
+    </html>

@@ -1,50 +1,45 @@
-<!DOCTYPE html>
-<html lang="ko">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <style>
+        <!DOCTYPE html>
+        <html lang="ko">
+        <head>
+          <meta charset="UTF-8">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+          <meta http-equiv="X-UA-Compatible" content="ie=edge">
+                        <style>
     @import url(https://fonts.googleapis.com/css?family=Open+Sans:300,400);
-
-    .blue {
-      background: #3498db;
+    @font-face { font-family: 'silgothic'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/silgothic.woff') format('woff'); font-weight: normal; font-style: normal; }
+    @font-face { font-family: 'DungGeunMo'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff'); font-weight: normal; font-style: normal; }
+    
+    html,
+    body,
+    .background {
+      height : 110%;
+      margin: 0;
     }
 
-    .purple {
-      background: #9b59b6;
-    }
+    html {
+      background: #fff;
 
-    .navy {
-      background: #34495e;
-    }
-
-    .green {
-      background: #2ecc71;
-    }
-
-    .red {
-      background: #e74c3c;
-    }
-
-    .orange {
-      background: #f39c12;
-    }
-
-    .cs335,
-    .cs426,
-    .md303,
-    .md352,
-    .md313,
-    .cs240 {
-      font-weight: 300;
-      cursor: pointer;
     }
 
     body {
-      background: #e74c3c;
-      padding: 20px;
+      padding: 10px;
+
+      background: #eee;
+      background: linear-gradient(0deg, rgba(0, 0, 200, 0.2), rgba(0, 0, 200, 0));
+
+      -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+    }
+
+    .background {
+      /* width: 130%; */
+
+    /* height: 120% !important; */
+      background: #eee;
+      background: linear-gradient(120deg, rgba(50, 150, 100, 0.2), rgba(0, 0, 100, 0));
     }
 
     *,
@@ -52,7 +47,7 @@
     *:after {
       margin: 0;
       padding: 0;
-      border: 0;
+      /* border: 0; */
       outline: 0;
       -moz-box-sizing: border-box;
       -webkit-box-sizing: border-box;
@@ -60,9 +55,22 @@
     }
 
     table {
+      width: 78% !important;
       font-family: 'Open Sans', Helvetica;
       color: #efefef;
-      /* direction:rtl; */
+      text-align: center;
+      /* margin: auto; */
+      padding: auto;
+      margin-top: 10px;
+      /* margin-bottom: 10px; */
+      position: relative;
+      float: left;
+
+    }
+
+    a {
+      color: #2f3b72;
+      text-decoration: none
     }
 
     table tr:nth-child(2n) {
@@ -73,9 +81,17 @@
       background: #fff;
     }
 
+    td {
+      color: #2f3b72;
+      font-weight: 1000;
+
+      font-family: 'DungGeunMo';
+      font-size: 12px !important;
+    }
+
     table th,
     table td {
-      padding: 1em;
+      padding: 0.7em;
       width: 10em;
     }
 
@@ -83,12 +99,15 @@
     .time {
       background: #34495e;
       text-transform: uppercase;
-      font-size: 0.6em;
+      font-size: 0.8em;
       text-align: center;
     }
 
-    .time {
+    #left_side {
       width: 3em !important;
+      background: #34495e;
+      font-size: 0.6em;
+      text-align: center;
     }
 
     /* Add this attribute to the element that needs a tooltip */
@@ -154,137 +173,241 @@
       filter: progid:DXImageTransform.Microsoft.Alpha(enabled=false);
       opacity: 1;
     }
+    #container{
+      position: relative;
+      float: left;
+      margin-left: 10px;
+  width: 20%;
+  background: rgba(0, 0, 200, 0.2);
+  padding: 25px;
+  border: 2px solid #fff;
+  border-radius: 40px/50px;
+  background-clip: padding-box;
+  text-align: center;
+  opacity: 50%;
+  font-family: 'silgothic';
+    font-size: 1em;
+    color: black;
+    font-weight: 1000;
+    white-space: nowrap;
+    }
   </style>
-  <title>Time Table</title>
-</head>
+          <title>Time Table</title>
+        </head>
+        
+        
+        
+        
+        <body>
+          <!-- <div class='tab'> -->
+          <table border='0' cellpadding='0' cellspacing='0'>
+            <tr class='days'>
+              <th id='left_side'>#</th>
+        
+              <th>Mon</th>
+              <th>Tue</th>
+              <th>Wed</th>
+              <th>Thu</th>
+              <th>Fri</th>
+        
+        
+            </tr>
+        
+                            <tr>
+              <th id='left_side'>1</th>
+              <td data-tooltip='4.7'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01122001>영어학개론(2)<br>(Introduction to English Linguistics (2))</a>
+</td>
+              <td data-tooltip='없음'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01259201>Critical Reading and Writing (2)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='3 / 없음'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01277201>Becoming a Great Orator (2)</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01259203>Critical Reading and Writing (2)</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-<body>
-  <!-- <div class='tab'> -->
-  <table border='0' cellpadding='0' cellspacing='0'>
-    <tr class='days'>
-      <th>#</th>
+                            <tr>
+              <th id='left_side'>2</th>
+              <td data-tooltip='4.7'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01122001>영어학개론(2)<br>(Introduction to English Linguistics (2))</a>
+</td>
+              <td data-tooltip='없음'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01259201>Critical Reading and Writing (2)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='3 / 없음'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01277201>Becoming a Great Orator (2)</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01259203>Critical Reading and Writing (2)</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-      <th>Mon</th>
-      <th>Tue</th>
-      <th>Wed</th>
-      <th>Thu</th>
-      <th>Fri</th>
+                            <tr>
+              <th id='left_side'>3</th>
+              <td data-tooltip='4.7 / 1.47'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01122001>영어학개론(2)<br>(Introduction to English Linguistics (2))</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=T05202201>컴퓨터프로그래밍2<br>(Computer Programming 2)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='1.47'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=T05202201>컴퓨터프로그래밍2<br>(Computer Programming 2)</a>
+</td>
+              <td >
+</td>
+              <td >
+</td>
+            </tr>
+            
 
+                            <tr>
+              <th id='left_side'>4</th>
+              <td data-tooltip='1.47'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=T05202201>컴퓨터프로그래밍2<br>(Computer Programming 2)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='1.47'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=T05202201>컴퓨터프로그래밍2<br>(Computer Programming 2)</a>
+</td>
+              <td data-tooltip='없음 / 3'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A10202101>영어데이터처리를위한프로그래밍(2)<br>(Programming for English Data Processing (2))</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01122002>영어학개론(2)<br>(Introduction to English Linguistics (2))</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>1</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td class='cs426 purple' data-tooltip='Computer Graphics'>ספרות</td>
-      <td></td>
-      <td></td>
-      <td></td>
+                            <tr>
+              <th id='left_side'>5</th>
+              <td >
+</td>
+              <td data-tooltip='1'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01259202>Critical Reading and Writing (2)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='없음 / 없음 / 3'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01277202>Becoming a Great Orator (2)</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A10202101>영어데이터처리를위한프로그래밍(2)<br>(Programming for English Data Processing (2))</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01122002>영어학개론(2)<br>(Introduction to English Linguistics (2))</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
+                            <tr>
+              <th id='left_side'>6</th>
+              <td >
+</td>
+              <td data-tooltip='1'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01259202>Critical Reading and Writing (2)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='없음 / 없음 / 3'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01277202>Becoming a Great Orator (2)</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A10202101>영어데이터처리를위한프로그래밍(2)<br>(Programming for English Data Processing (2))</a><br><br>
+<a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01122002>영어학개론(2)<br>(Introduction to English Linguistics (2))</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>2</td>
-      <td></td>
-      <td class='cs335 blue lab' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td class='md352 green' data-tooltip='Multimedia Production &amp; Management'>מתמטיקה</td>
-      <td></td>
-      <td></td>
+                            <tr>
+              <th id='left_side'>7</th>
+              <td >
+</td>
+              <td data-tooltip='3.64'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=V44303501>자료구조<br>(Data Structure)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='3.58'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01224301>영국의이해<br>(Understanding U.K.)</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>3</td>
-      <td></td>
-      <td class='cs335 blue lab' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td class='md352 green' data-tooltip='Multimedia Production &amp; Management'>מתמטיקה</td>
-      <td class='cs240 orange' data-tooltip='Operating Systems'>מדעי המחשב</td>
-      <td></td>
+                            <tr>
+              <th id='left_side'>8</th>
+              <td >
+</td>
+              <td data-tooltip='3.64'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=V44303501>자료구조<br>(Data Structure)</a>
+</td>
+              <td >
+</td>
+              <td data-tooltip='3.58'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=A01224301>영국의이해<br>(Understanding U.K.)</a>
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>4</td>
-      <td></td>
-      <td class='md303 navy' data-tooltip='Media &amp; Globalisation'>אזרחות</td>
-      <td class='md313 red' data-tooltip='Special Topic: Multiculturalism &amp; Nationalism'>ביולוגיה</td>
-      <td></td>
-      <td></td>
+                            <tr>
+              <th id='left_side'>9</th>
+              <td >
+</td>
+              <td data-tooltip='3.64'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=V44303501>자료구조<br>(Data Structure)</a>
+</td>
+              <td data-tooltip='2.75'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=V44301701>컴퓨터구조<br>(Computer Architecture)</a>
+</td>
+              <td >
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>5</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+                            <tr>
+              <th id='left_side'>10</th>
+              <td >
+</td>
+              <td >
+</td>
+              <td data-tooltip='2.75'><a href=https://wis.hufs.ac.kr/src08/jsp/lecture/syllabus.jsp?mode=print&amp;ledg_year=2019&amp;ledg_sessn=3&amp;org_sect=A&amp;lssn_cd=V44301701>컴퓨터구조<br>(Computer Architecture)</a>
+</td>
+              <td >
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>6</td>
-      <td></td>
-      <td></td>
-      <td class='cs426 purple' data-tooltip='Computer Graphics'>ספרות</td>
-      <td class='cs240 orange' data-tooltip='Operating Systems'>מדעי המחשב</td>
-      <td></td>
+                            <tr>
+              <th id='left_side'>11</th>
+              <td >
+</td>
+              <td >
+</td>
+              <td >
+</td>
+              <td >
+</td>
+              <td >
+</td>
+            </tr>
+            
 
-    </tr>
-    <tr>
-      <td class='time'>7</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td class='cs240 orange lab' data-tooltip='Operating Systems'>מדעי המחשב</td>
-      <td></td>
-
-    </tr>
-    <tr>
-      <td class='time'>8</td>
-
-      <td></td>
-      <td></td>
-      <td></td>
-      <td class='cs240 orange lab' data-tooltip='Operating Systems'>מדעי המחשב</td>
-      <td></td>
-
-    </tr>
-    <tr>
-      <td class='time'>9</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-
-    </tr>
-    <tr>
-      <td class='time'>10</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-
-    </tr>
-    <tr>
-      <td class='time'>11</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-
-
-    </tr>
-    <tr>
-      <td class='time'>12</td>
-      <td class='cs335 blue' data-tooltip='Software Engineering &amp; Software Process'>אנגלית</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-
-    </tr>
-  </table>
-  <!-- </div> -->
-</body>
-
-</html>
+                            <tr>
+              <th id='left_side'>12</th>
+              <td >
+</td>
+              <td >
+</td>
+              <td >
+</td>
+              <td >
+</td>
+              <td >
+</td>
+            </tr>
+                
+       </table>
+      <!-- </div> -->
+      <div id='container'>
+        <p>강의계획서 - 강의명 클릭!</p>
+        <p>강의평 - 강의명에 마우스 올리기!</p>
+        
+      </div>
+    </body>
+    
+    </html>
+    

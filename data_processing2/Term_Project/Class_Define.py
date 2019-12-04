@@ -13,7 +13,7 @@ class Department:
 
 class Class:
     def __init__(self, area, year, subject, syllabus, required, online, foreign, team_teaching, prof,
-                 credit, class_time, restrict_num, note = '없음', avg_stars = 'Not defined'):
+                 credit, class_time, restrict_num, note = '없음', avg_stars = '-'):
         self.area = area
         self.year = year
         self.subject = subject
@@ -56,18 +56,21 @@ class User_Table(User):
         first_major_obj = fst_obj
         with open(first_major_obj.name + '1.txt', 'w', encoding="UTF-8") as file:
             for course in first_major_obj.classes:
-                if 'Not defined' in course.stars:
+                if (self.course_evl == True and '-' in course.stars) or not course.year in self.grade or '이중' in course.area:
                     continue
-                file.write(" # ".join(course()) + "\n")
+                file.write(" # ".join(course()) + '\n')
                 self.insert_course(course)
+        print('1전공 조건 추출 완료')
 
         second_major_obj = sec_obj
         with open(second_major_obj.name + '1.txt', 'w', encoding="UTF-8") as file:
             for course in second_major_obj.classes:
-                if 'Not defined' in course.stars:
+                if (self.course_evl == True and '-' in course.stars) or not course.year in self.grade or '1전공자 전용' in course.note:
                     continue
-                file.write(" # ".join(course()) + "\n")
+                file.write(" # ".join(course()) + '\n')
                 self.insert_course(course)
+        print('2전공 조건 추출 완료')
+
 
         return self.courses
 
