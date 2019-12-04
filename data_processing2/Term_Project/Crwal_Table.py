@@ -156,8 +156,12 @@ class Crwal_Table:
                         input_box.send_keys(course.subject.split(' / ')[0])
                         browser.execute_script("arguments[0].click();", submit_btn)
                         time.sleep(0.5)
-                        profs= browser.find_element_by_xpath("//*[contains(text(), '" + course.prof + "')]")
-
+                        if course.prof in browser.page_source:
+                            profs= browser.find_element_by_xpath("//*[contains(text(), '" + course.prof + "')]")
+                        else:
+                            course.stars = '없음'
+                            browser.back()
+                            break
                         browser.execute_script("arguments[0].click();", profs)
                         time.sleep(0.5)
                         stars = browser.find_element_by_class_name('value').text
@@ -166,7 +170,6 @@ class Crwal_Table:
                         course.stars = stars
                         browser.back()
                         browser.back()
-
                         break
 
                     except:

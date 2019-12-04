@@ -233,21 +233,22 @@ class HTML:
     </html>
     """
 
-    def make_result_html(self, user, dict):
+    def make_result_html(self, dict):
         print('웹페이지 제작중...')
         tds_list = []
-        td_html = '''
-                <tr>
-                  <th id='left_side'>{time}</th>
-                  <td {stars1}>{Mon}</td>
-                  <td {stars2}>{Tue}</td>
-                  <td {stars3}>{Wed}</td>
-                  <td {stars4}>{Thu}</td>
-                  <td {stars5}>{Fri}</td>
-                </tr>
-                    '''
+
         time = 1
-        while time < 4:
+        while time < 13:
+            td_html = '''
+                    <tr>
+                      <th id='left_side'>{time}</th>
+                      <td {stars1}>{Mon}</td>
+                      <td {stars2}>{Tue}</td>
+                      <td {stars3}>{Wed}</td>
+                      <td {stars4}>{Thu}</td>
+                      <td {stars5}>{Fri}</td>
+                    </tr>
+                        '''
             html_list = []
             stars_list = []
 
@@ -256,45 +257,39 @@ class HTML:
             Wed = dict['Wed'][time - 1]
             Thu = dict['Thu'][time - 1]
             Fri = dict['Fri'][time - 1]
-            def day_table(day):
+            def day_table(day, html_list):
                 temp_stars = []
                 insert_html = ""
-                # print(day)
                 for i in day:
-                    sub = i['name'].split(' / ')[0]
+                    sub = i['sub'].split(' / ')[0]
+                    syllabus = i['syllabus']
                     prof = i['prof']
-                    insert_html += '<a href=' + i['syllabus'] + '>' + sub + '<br>' + ' (' + prof + ')' +'</a>' + '<br><br>\n'
-                    temp_stars.append(i['stars'])
+                    stars = i['stars']
+                    sub = sub + '<br>' + '(' + prof + ')'
+                    insert_html += '<a href="' + syllabus + '">' + sub + '</a>' + '<br><br>\n'
+                    temp_stars.append(stars)
+                html_list.append(insert_html[:-9])
                 stars_list.append(" / ".join(temp_stars))
-                html_list.append(insert_html[:-9] + '\n')
                 return html_list
 
-            day_table(Mon)
-            day_table(Tue)
-            day_table(Wed)
-            day_table(Thu)
-            day_table(Fri)
-            print(html_list[3])
+            html_list = day_table(Mon, html_list)
+            html_list = day_table(Tue, html_list)
+            html_list = day_table(Wed, html_list)
+            html_list = day_table(Thu, html_list)
+            html_list = day_table(Fri, html_list)
+
             for i in range(5):
                 if len(stars_list[i]) == 0:
                     stars_list[i] = ''
                 else:
                     stars_list[i] = 'data-tooltip=' + "'" + stars_list[i] + "'"
-            # print(time)
-            # print(html_list[3])
+
             td_html = td_html.format(time=str(time), Mon=html_list[0], Tue=html_list[1], Wed=html_list[2],
                                      Thu=html_list[3], Fri=html_list[4], stars1=stars_list[0],
                                      stars2=stars_list[1], stars3=stars_list[2], stars4=stars_list[3],
                                      stars5=stars_list[4])
-            # print(html_list[0])
-            # print()
-            # print()
-            # print(td_html)
-            # print()
             tds_list.append(td_html)
             time += 1
-            print(tds_list)
-
         return tds_list
 
 
@@ -331,16 +326,11 @@ class HTML:
                             html_list.append(insert_html)
                         temp_stars =[]
                         for i in line:
-                            print(i)
                             i = i.split('::')
-                            print(i)
                             i = i[1:]
-                            print(i)
                             if len(i) == 0:
                                 continue
                             subject = i[0].split(' / ')
-                            print(subject)
-                            print(i[1])
 
                             temp_stars.append(i[1])
                             if len(i) > 1:
