@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.support.ui import Select
 import time
 
-from Class_Define import Department, Class, User
+from Class_Define import Department, Class
 
 class Crwal_Table:
     def __init__(self):
@@ -31,7 +31,11 @@ class Crwal_Table:
         return self.dept_eles
 
     def make_timetable(self, major):
+        if major == None:
+            return None
+
         print(major, '데이터 수집 중')
+
         try:
             with open(major + '_all.txt', 'r', encoding="UTF-8") as file:
                 class_list = file.readlines()
@@ -47,8 +51,17 @@ class Crwal_Table:
         except:
 
             dept_eles = self.lecture_home()
-            major_index = self.dept_list.index(major)
-            depart = Department(major)
+            major_index = None
+            for i in range(len(self.dept_list)):
+                if major in self.dept_list[i]:
+                    major_index = i
+                    break
+
+            if not major_index:
+                raise Exception("학과를 정확히 입력해주세요!")
+
+            # major_index = self.dept_list.index(major)
+            depart = Department(self.dept_list[major_index])
             dept_eles.select_by_index(major_index)
 
             time.sleep(0.5)
@@ -76,25 +89,25 @@ class Crwal_Table:
 
                 required = tds[6]
                 if required.find('img'):
-                    required = '필수'
+                    required = 'O'
                 else:
                     required = required.get_text()
 
                 online = tds[7]
                 if online.find('img'):
-                    online = '온라인'
+                    online = 'O'
                 else:
                     online = online.get_text()
 
                 foreign = tds[8]
                 if foreign.find('img'):
-                    foreign = '원어'
+                    foreign = 'O'
                 else:
                     foreign = foreign.get_text()
 
                 team_teaching = tds[10]
                 if team_teaching.find('img'):
-                    team_teaching = '팀티칭'
+                    team_teaching = 'O'
                 else:
                     team_teaching = team_teaching.get_text()
 
@@ -137,15 +150,17 @@ class Crwal_Table:
             return
 
         fst_class_list = dept_obj1.classes
-        scd_class_list = dept_obj2.classes
+        scd_class_list = None
+        if dept_obj2 != None:
+            scd_class_list = dept_obj2.classes
 
         def course_insert(class_list):
             for course in class_list:
                 if course.year not in grade:
                     continue
                 else:
-                    if (dept_obj1.classes == class_list and '이중' in course.area) \
-                            or (dept_obj2.classes == class_list and '1전공자 전용' in course.note):
+                    if (fst_class_list == class_list and '이중' in course.area) \
+                            or (scd_class_list == class_list and '1전공자 전용' in course.note):
                         continue
 
                 while True:
@@ -159,14 +174,14 @@ class Crwal_Table:
                         if course.prof in browser.page_source:
                             profs= browser.find_element_by_xpath("//*[contains(text(), '" + course.prof + "')]")
                         else:
-                            course.stars = '없음'
+                            course.stars = '-'
                             browser.back()
                             break
                         browser.execute_script("arguments[0].click();", profs)
                         time.sleep(0.5)
                         stars = browser.find_element_by_class_name('value').text
                         if stars == '0':
-                            stars = '없음'
+                            stars = '-'
                         course.stars = stars
                         browser.back()
                         browser.back()
@@ -182,8 +197,9 @@ class Crwal_Table:
         print('강의평 가져오는중...')
         course_insert(fst_class_list)
         print('1전공 완료')
-        course_insert(scd_class_list)
-        print('2전공 완료')
+        if scd_class_list:
+            course_insert(scd_class_list)
+            print('2전공 완료')
         browser.close()
 
 
