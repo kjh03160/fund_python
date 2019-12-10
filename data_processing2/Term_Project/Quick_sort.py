@@ -26,11 +26,11 @@ def quick_sort_by_time(list, p, r):
 def partition_by_time(list, p, r):
     refer = {
         '월' : 10,
-        '화' : 20,
-        '수' : 30,
-        '목' : 40,
-        '금' : 50,
-        'x' : 60
+        '화' : 30,
+        '수' : 50,
+        '목' : 70,
+        '금' : 90,
+        'x' : 120
     }
     x = list[r].class_time.split()
     if len(x) > 1:

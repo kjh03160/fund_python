@@ -515,7 +515,7 @@ left:-73px;
     def make_result_html(self, dict, credit):
         print('웹페이지 제작중...')
         time = 1
-        while time < 13:
+        while time < 14:
             td_html = '''
                     <tr>
                       <th id='left_side'>{time}</th>

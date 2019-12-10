@@ -2,7 +2,6 @@ class Department:
     def __init__(self, name):
         self.name = name
         self.classes = []
-        self.counts = len(self.classes)
 
     def __str__(self):
         return self.name
@@ -38,26 +37,27 @@ class Class:
 
 
 class User:
-    def __init__(self, grade, first_major, second_major = None):
+    def __init__(self, course_evl, grade, first_major, second_major = None):
         self.first_major = first_major
         self.second_major = second_major
         self.grade = grade
         self.courses = []
+        self.course_evl = course_evl
+
 
 
 class User_Table(User):
     def __init__(self, course_evl, grade, first_major, second_major = None):
-        self.course_evl = course_evl
         self.credits = 0
 
         self.time_table = {
-                'Mon' : [[] for i in range(12)],
-                'Tue' : [[] for i in range(12)],
-                'Wed' : [[] for i in range(12)],
-                'Thu' : [[] for i in range(12)],
-                'Fri' : [[] for i in range(12)],
+                'Mon' : [[] for i in range(13)],
+                'Tue' : [[] for i in range(13)],
+                'Wed' : [[] for i in range(13)],
+                'Thu' : [[] for i in range(13)],
+                'Fri' : [[] for i in range(13)],
             }
-        super().__init__(grade, first_major, second_major)
+        super().__init__(course_evl, grade, first_major, second_major)
 
     def insert_course(self, course_obj):
         self.courses.append(course_obj)

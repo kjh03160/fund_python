@@ -34,28 +34,27 @@ class Crwal_Table:
         if major == None:
             return None
 
-        print(major, '데이터 수집 중')
-
         try:
             with open(major + '_all.txt', 'r', encoding="UTF-8") as file:
                 class_list = file.readlines()
                 depart = Department(major)
+                print(depart.name, '데이터 수집 중')
                 for i in class_list:
                     i = i.split(" # ")
                     area, year, subject, syllabus, required, online, foreign, team_teaching, prof, credit, class_time, restrict_num, note, stars = i
                     depart.insert_class(Class(area, year, subject, syllabus, required, online, foreign,
                                               team_teaching, prof, credit, class_time, restrict_num, note, stars))
             print("데이터 수집 완료")
-
             return depart
-        except:
 
+        except:
             dept_eles = self.lecture_home()
             major_index = None
             for i in range(len(self.dept_list)):
                 if major in self.dept_list[i]:
                     major_index = i
                     break
+            print(self.dept_list[major_index], '데이터 수집 중')
 
             if not major_index:
                 raise Exception("학과를 정확히 입력해주세요!")

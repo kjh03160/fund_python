@@ -1,9 +1,9 @@
-a = [3, 31, 48, 73, 8, 11, 20, 29, 65, 15]
-b = [3, 31, 48, 73, 8, 11, 20, 29, 65, 15]
+a = [90, 31, 48, 73, 8, 11, 20, 29, 65, 15]
+b = [90, 31, 48, 73, 8, 11, 20, 29, 65, 15, 100]
 
 def bubble_sort(my_list):
     for i in range(len(my_list)):
-        for j in range(len(my_list) - i - 1):
+        for j in range(len(my_list)-1):
             if my_list[j] > my_list[j + 1]:
                 my_list[j], my_list[j + 1] = my_list[j + 1], my_list[j]
 
