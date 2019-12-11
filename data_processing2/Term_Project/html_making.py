@@ -512,10 +512,10 @@ left:-73px;
 </html>
         """
 
-    def make_result_html(self, dict, credit):
+    def make_result_html(self, user):
         print('웹페이지 제작중...')
         time = 1
-        while time < 14:
+        while time < user.longest:
             td_html = '''
                     <tr>
                       <th id='left_side'>{time}</th>
@@ -529,11 +529,11 @@ left:-73px;
             html_list = []
             stars_list = []
 
-            Mon = dict['Mon'][time - 1]
-            Tue = dict['Tue'][time - 1]
-            Wed = dict['Wed'][time - 1]
-            Thu = dict['Thu'][time - 1]
-            Fri = dict['Fri'][time - 1]
+            Mon = user.time_table['Mon'][time - 1]
+            Tue = user.time_table['Tue'][time - 1]
+            Wed = user.time_table['Wed'][time - 1]
+            Thu = user.time_table['Thu'][time - 1]
+            Fri = user.time_table['Fri'][time - 1]
             def day_table(day, html_list):
                 temp_stars = []
                 insert_html = ""
@@ -565,7 +565,7 @@ left:-73px;
                                      stars5=stars_list[4])
 
             time += 1
-        self.main_bottom_html = self.main_bottom_html.format(credit=credit)
+        self.main_bottom_html = self.main_bottom_html.format(credit=user.credits)
 
 
 

@@ -49,18 +49,16 @@ class User:
 class User_Table(User):
     def __init__(self, course_evl, grade, first_major, second_major = None):
         self.credits = 0
-
-        self.time_table = {
-                'Mon' : [[] for i in range(13)],
-                'Tue' : [[] for i in range(13)],
-                'Wed' : [[] for i in range(13)],
-                'Thu' : [[] for i in range(13)],
-                'Fri' : [[] for i in range(13)],
-            }
+        self.longest = 0
+        self.time_table = None
         super().__init__(course_evl, grade, first_major, second_major)
 
     def insert_course(self, course_obj):
         self.courses.append(course_obj)
+        class_time = course_obj.class_time.split('(')[0].strip()
+        class_time = int(class_time.split()[-1])
+        if class_time > self.longest:
+            self.longest = class_time
         self.credits += int(course_obj.credit)
 
     def make_txt(self, fst_obj, sec_obj):
@@ -83,7 +81,13 @@ class User_Table(User):
                     self.insert_course(course)
             print('2전공 조건 추출 완료')
 
-
+        self.time_table = {
+            'Mon': [[] for i in range(self.longest)],
+            'Tue': [[] for i in range(self.longest)],
+            'Wed': [[] for i in range(self.longest)],
+            'Thu': [[] for i in range(self.longest)],
+            'Fri': [[] for i in range(self.longest)],
+        }
         return self.credits
 
     def make_time_dict(self):
@@ -106,6 +110,7 @@ class User_Table(User):
                     # dict[s.peek()][int(j) - 1].append('subject::' + i.subject + '::' + i.stars + '::' + i.syllabus + ',')
             while not s.isEmpty:
                 s.pop()
+
         return self.time_table
 
 class Stack:
