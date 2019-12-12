@@ -11,7 +11,6 @@ def partition(list, p, r):
         if list[j] < x:
             i += 1
             list[j], list[i] = list[i], list[j]
-        print(list)
 
     list[i + 1], list[r] = list[r], list[i + 1]
     return i + 1

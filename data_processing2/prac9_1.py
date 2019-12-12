@@ -29,16 +29,16 @@ class Tree:
             self.postorder(v.right)
             print(v.key, end = " ")
 
-    def search(self, key):  # 있으면 노드를 리턴, 없으면 NOne O(h) = O(n)
-        num = 0
-        v = self.root
+    def search(self, v, key):  # 있으면 노드를 리턴, 없으면 NOne O(h) = O(n)
         if v:
-            self.search(v.left)
-            self.search(v.right)
+            left = self.search(v.left, key)
+            right = self.search(v.right, key)
             if v.key == key:
-                num += 1
-                print(num)
-        return num
+                num = 1
+            else: num = 0
+            result = left + right + num
+            return result
+        return 0
     def number(self, x):
         if x == None:
             return 0
@@ -78,4 +78,4 @@ n12 = Node('A', n10, n11)
 
 T2 = Tree(n12)
 a = input('Input a data : ')
-print(T2.search(a))
+print(T2.search(T2.root, a))
