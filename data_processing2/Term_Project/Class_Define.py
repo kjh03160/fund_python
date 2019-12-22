@@ -63,22 +63,18 @@ class User_Table(User):
 
     def make_txt(self, fst_obj, sec_obj):
         first_major_obj = fst_obj
-        with open(first_major_obj.name + '_classified.txt', 'w', encoding="UTF-8") as file:
-            for course in first_major_obj.classes:
-                if (self.course_evl == True and ' - ' in course.stars) or not course.year in self.grade or '이중' in course.area:
-                    continue
-                file.write(" # ".join(course()) + '\n')
-                self.insert_course(course)
+        for course in first_major_obj.classes:
+            if (self.course_evl == True and ' - ' in course.stars) or not course.year in self.grade or '이중' in course.area:
+                continue
+            self.insert_course(course)
         print('1전공 조건 추출 완료')
 
         if sec_obj:
             second_major_obj = sec_obj
-            with open(second_major_obj.name + '_classified.txt', 'w', encoding="UTF-8") as file:
-                for course in second_major_obj.classes:
-                    if (self.course_evl == True and ' - ' in course.stars) or not course.year in self.grade or '1전공자 전용' in course.note:
-                        continue
-                    file.write(" # ".join(course()) + '\n')
-                    self.insert_course(course)
+            for course in second_major_obj.classes:
+                if (self.course_evl == True and ' - ' in course.stars) or not course.year in self.grade or '1전공자 전용' in course.note:
+                    continue
+                self.insert_course(course)
             print('2전공 조건 추출 완료')
 
         self.time_table = {
@@ -107,7 +103,6 @@ class User_Table(User):
                 else:
                     subject_information = {'sub': i.subject, 'syllabus': i.syllabus, 'prof': i.prof, 'stars': i.stars, 'credit' :  i.credit}
                     self.time_table[s.peek()][int(j) - 1].append(subject_information)
-                    # dict[s.peek()][int(j) - 1].append('subject::' + i.subject + '::' + i.stars + '::' + i.syllabus + ',')
             while not s.isEmpty:
                 s.pop()
 

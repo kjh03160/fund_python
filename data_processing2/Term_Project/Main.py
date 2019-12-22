@@ -2,12 +2,13 @@ from Class_Define import User_Table
 from Crwal_Table import Crwal_Table
 from html_making import HTML
 import os
+from sys import exit
 
 def main():
     while True:
         majors = input('1전공, 2전공을 입력해주세요 (띄어쓰기로 구분), 종료(q 입력) : ').split()
         if majors[0] == 'q':
-            break
+            exit()
         grade = input('듣고 싶은 수업의 학년을 입력해주세요 (띄어쓰기로 구분) : ').split()
         course_evl = input('강의 평가를 추가하시겠습니까? (에브리타임 로그인 필요, y/n) : ')
 
@@ -28,18 +29,14 @@ def main():
             if course_evl == 'y':
                 user1.course_evl = True
                 crawling.get_avg_stars(first_major_obj, second_major_obj, grade)
+            if crawling.browser:
+                crawling.browser.close()
 
             user1.make_txt(first_major_obj, second_major_obj)
 
             user1.make_time_dict()
 
-            # data = pd.DataFrame(time_table_dict, index = [i + 1 for i in range(12)])
-            # data_html = data.to_html()
-            # with open('temp.html', 'w', encoding='UTF-8') as file:
-            #     file.write(data_html)
-
             html = HTML()
-            # td_html = "\n".join(html.make_by_pandas(time_table_dict))
             html.make_result_html(user1)
             html.make_list_html(user1)
 
@@ -59,4 +56,4 @@ def main():
 
 if __name__ == "__main__":
     main()
-    # input()
+    input()

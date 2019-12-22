@@ -12,7 +12,7 @@ class Crwal_Table:
         self.options.add_argument("user-agent=Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) "
                              "Chrome/61.0.3163.100 Safari/537.36")
 
-        self.browser = webdriver.Chrome('chromedriver.exe', options=self.options)
+        self.browser = None
 
         self.dept_list = []
         self.dept_eles = None
@@ -31,6 +31,7 @@ class Crwal_Table:
         return self.dept_eles
 
     def make_timetable(self, major):
+
         if major == None:
             return None
 
@@ -48,10 +49,12 @@ class Crwal_Table:
             return depart
 
         except:
+            if not self.browser:
+                self.browser = webdriver.Chrome('chromedriver.exe', options=self.options)
             dept_eles = self.lecture_home()
             major_index = None
             for i in range(len(self.dept_list)):
-                if major in self.dept_list[i]:
+                if major.lower() in self.dept_list[i].lower():
                     major_index = i
                     break
             print(self.dept_list[major_index], '데이터 수집 중')
@@ -76,7 +79,7 @@ class Crwal_Table:
                 subject = tds[4].get_text().strip().splitlines()
                 subject = " / ".join(subject)
                 try:
-                    syllabus = tds[5].find('a').get('href').split('\'')
+                    syllabus = tds[5].find('a')['href'].split('\'')
                     ag_1 = syllabus[1]
                     ag_2 = syllabus[3]
                     ag_3 = syllabus[5]
@@ -129,6 +132,8 @@ class Crwal_Table:
 
 
     def get_avg_stars(self, dept_obj1, dept_obj2, grade):
+        if not self.browser:
+            self.browser = webdriver.Chrome('chromedriver.exe', options=self.options)
         browser = self.browser
         browser.get("https://everytime.kr/lecture")
         try:

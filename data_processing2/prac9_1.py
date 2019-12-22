@@ -4,18 +4,27 @@ class Node:
         self.num = num
         self.left = left
         self.right = right
+        self.num = 0
     # left, right 둘 다 None이면 leaf Node
 
 class Tree:
     def __init__(self, root):
         self.root = root
+        self.num = 0
 
     # 순회
-    def preorder(self, v): # v는 노드
-        if v != None:
-            print(v.key, end = " ")        # M
-            self.preorder(v.left)    # L
-            self.preorder(v.right)   # R
+    def preorder(self, v, k = False,  ch = None): # v는 노드
+        if k:
+            if v != None:
+                if v.key == ch:
+                    self.num += 1
+                self.preorder(v.left, True, ch)    # L
+                self.preorder(v.right, True, ch)   # R
+        else:
+            if v != None:
+                print(v.key, end = " ")        # M
+                self.preorder(v.left)    # L
+                self.preorder(v.right)
 
     def inorder(self, v):
         if v != None:
@@ -29,7 +38,7 @@ class Tree:
             self.postorder(v.right)
             print(v.key, end = " ")
 
-    def search(self, v, key):  # 있으면 노드를 리턴, 없으면 NOne O(h) = O(n)
+    def search(self, v, key):
         if v:
             left = self.search(v.left, key)
             right = self.search(v.right, key)
@@ -39,6 +48,12 @@ class Tree:
             result = left + right + num
             return result
         return 0
+
+    def search2(self, v):
+        self.preorder(self.root, k = True, ch = v)
+        return self.num
+
+
     def number(self, x):
         if x == None:
             return 0
@@ -77,5 +92,6 @@ n11 = Node('B', n8, n9)
 n12 = Node('A', n10, n11)
 
 T2 = Tree(n12)
+T2.preorder(n12)
 a = input('Input a data : ')
-print(T2.search(T2.root, a))
+print(T2.search2(a))
