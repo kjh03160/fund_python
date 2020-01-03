@@ -13,30 +13,48 @@ class Crwal_Table:
                              "Chrome/61.0.3163.100 Safari/537.36")
 
         self.browser = None
-
+        self.year = None
+        self.semester = None
         self.dept_list = []
+        self.semester_trans = {'1' : '1', '2' : '3', '여름' : '2', '겨울' : '4'}
         self.dept_eles = None
 
-    def lecture_home(self):
-        self.browser.get("https://wis.hufs.ac.kr/src08/jsp/lecture/LECTURE2020L.jsp")
+    def get_year_obj(self, rq_year):
+        year = self.browser.find_element_by_name('ag_ledg_year')
+        self.year = Select(year)
+        self.year.select_by_value('20' + rq_year)
+
+
+    def get_semester_obj(self, rq_semester):
+        semester = self.browser.find_element_by_name('ag_ledg_sessn')
+        self.semester = Select(semester)
+        self.semester.select_by_value(self.semester_trans[rq_semester])
+
+
+    def lecture_home(self, year, semester):
+        if self.browser.current_url != "https://wis.hufs.ac.kr/src08/jsp/lecture/LECTURE2020L.jsp":
+            self.browser.get("https://wis.hufs.ac.kr/src08/jsp/lecture/LECTURE2020L.jsp")
+
+        if not self.year:
+            self.get_year_obj(year)
+            time.sleep(0.3)
+            self.get_semester_obj(semester)
 
         dept_eles = self.browser.find_element_by_name('ag_crs_strct_cd')
-
         if len(self.dept_list) == 0:
             for i in dept_eles.find_elements_by_tag_name('option'):
                 self.dept_list.append(i.text.strip()[6:].split('(')[0].strip())
 
         self.dept_eles = Select(dept_eles)
-
         return self.dept_eles
 
-    def make_timetable(self, major):
+    def make_timetable(self, major, rq_year, rq_semester):
 
         if major == None:
             return None
 
         try:
-            with open(major + '_all.txt', 'r', encoding="UTF-8") as file:
+            with open(rq_year + '-' + rq_semester + ' ' + major + '.txt', 'r', encoding="UTF-8") as file:
                 class_list = file.readlines()
                 depart = Department(major)
                 print(depart.name, '데이터 수집 중')
@@ -51,7 +69,8 @@ class Crwal_Table:
         except:
             if not self.browser:
                 self.browser = webdriver.Chrome('chromedriver.exe', options=self.options)
-            dept_eles = self.lecture_home()
+            dept_eles = self.lecture_home(rq_year, rq_semester)
+
             major_index = None
             for i in range(len(self.dept_list)):
                 if major.lower() in self.dept_list[i].lower():
@@ -101,7 +120,7 @@ class Crwal_Table:
                 else:
                     online = online.get_text()
 
-                foreign = tds[8]
+                foreign = tds[9]
                 if foreign.find('img'):
                     foreign = 'O'
                 else:
@@ -126,7 +145,7 @@ class Crwal_Table:
                     depart.insert_class(Class(area, year, subject, syllabus, required, online, foreign,
                                               team_teaching, prof, credit, class_time, restrict_num, note))
 
-            self.all_courses(depart)
+            self.all_courses(depart, rq_year, rq_semester)
         print("데이터 수집 완료")
         return depart
 
@@ -207,7 +226,7 @@ class Crwal_Table:
         browser.close()
 
 
-    def all_courses(self, dept_obj):
-        with open(dept_obj.name + '_all.txt', 'w', encoding="UTF-8") as file:
+    def all_courses(self, dept_obj, year, semester):
+        with open(year + '-' + semester + ' ' + dept_obj.name + '.txt', 'w', encoding="UTF-8") as file:
             for course in dept_obj.classes:
                 file.write(" # ".join(course()) + "\n")

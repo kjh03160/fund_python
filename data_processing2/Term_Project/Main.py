@@ -6,6 +6,7 @@ from sys import exit
 
 def main():
     while True:
+        year, semester = input('학기를 입력해주세요 (Ex 20-1 or 20-여름) : ').split('-')
         majors = input('1전공, 2전공을 입력해주세요 (띄어쓰기로 구분), 종료(q 입력) : ').split()
         if majors[0] == 'q':
             exit()
@@ -21,8 +22,8 @@ def main():
                 first_major = majors[0]
                 second_major = None
 
-            first_major_obj = crawling.make_timetable(first_major)
-            second_major_obj = crawling.make_timetable(second_major)
+            first_major_obj = crawling.make_timetable(first_major, year, semester)
+            second_major_obj = crawling.make_timetable(second_major, year, semester)
 
             user1 = User_Table(False, grade, first_major, second_major)
 
