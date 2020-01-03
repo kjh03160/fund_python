@@ -451,6 +451,22 @@ left:-73px;
   color: #fff;
 }
 
+.required {
+    color : red;
+}
+
+.team {
+    color : green;
+}
+
+.foreign{
+    color : purple;
+}
+
+.online {
+    color : blue;
+}
+
 
 
 
@@ -514,8 +530,7 @@ left:-73px;
 
     def make_result_html(self, user):
         print('웹페이지 제작중...')
-        time = 1
-        while time < user.longest:
+        for time in range(user.longest):
             td_html = '''
                     <tr>
                       <th id='left_side'>{time}</th>
@@ -529,11 +544,11 @@ left:-73px;
             html_list = []
             stars_list = []
 
-            Mon = user.time_table['Mon'][time - 1]
-            Tue = user.time_table['Tue'][time - 1]
-            Wed = user.time_table['Wed'][time - 1]
-            Thu = user.time_table['Thu'][time - 1]
-            Fri = user.time_table['Fri'][time - 1]
+            Mon = user.time_table['Mon'][time]
+            Tue = user.time_table['Tue'][time]
+            Wed = user.time_table['Wed'][time]
+            Thu = user.time_table['Thu'][time]
+            Fri = user.time_table['Fri'][time]
             def day_table(day, html_list):
                 temp_stars = []
                 insert_html = ""
@@ -559,12 +574,11 @@ left:-73px;
                 else:
                     stars_list[i] = 'data-tooltip=' + "'" + stars_list[i] + "'"
 
-            self.main_body_html += td_html.format(time=str(time), Mon=html_list[0], Tue=html_list[1], Wed=html_list[2],
+            self.main_body_html += td_html.format(time=str(time + 1), Mon=html_list[0], Tue=html_list[1], Wed=html_list[2],
                                      Thu=html_list[3], Fri=html_list[4], stars1=stars_list[0],
                                      stars2=stars_list[1], stars3=stars_list[2], stars4=stars_list[3],
                                      stars5=stars_list[4])
 
-            time += 1
         self.main_bottom_html = self.main_bottom_html.format(credit=user.credits)
 
 
@@ -580,10 +594,10 @@ left:-73px;
                               <tr>
                         <td width="30px">{area}</td>
                         <td width="350px">{subject}</td>
-                        <td width="60px">{required}</td>
-                        <td width="60px">{online}</td>
-                        <td width="60px">{foreign}</td>
-                        <td width="60px">{team_teaching}</td>
+                        <td width="60px" class="required"><b>{required}</b></td>
+                        <td width="60px" class="online"><b>{online}</b></td>
+                        <td width="60px" class="foreign"><b>{foreign}</b></td>
+                        <td width="60px" class="team"><b>{team_teaching}</b></td>
                         <td width="80px">{prof}</td>
                         <td width="30px">{credit}</td>
                         <td width="50px">{class_time}</td>
