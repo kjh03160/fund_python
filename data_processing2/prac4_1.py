@@ -39,7 +39,7 @@ class ComplexNumber:
         return new
 
     def __call__(self):
-        print("%f + %fj" % (self.__real, self.__imag))
+        print("%f %+fj" % (self.__real, self.__imag))
         print("Magnitude : %f" % self.magnitude())
 
     @staticmethod
